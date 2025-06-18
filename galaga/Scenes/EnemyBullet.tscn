@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://0ya7uke50p5i"]
+
+[ext_resource type="Script" uid="uid://bhi8ywflfw3fa" path="res://Scripts/bullet.gd" id="1_i5veg"]
+[ext_resource type="Texture2D" uid="uid://bb8dj0oqaik8" path="res://Assets/modelos galaga/PNG/Default/ship_B.png" id="2_701ao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6afsh"]
+size = Vector2(6, 7)
+
+[node name="EnemyBullet" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_i5veg")
+
+[node name="BulletSmall" type="Sprite2D" parent="."]
+position = Vector2(0, 3)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_701ao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_6afsh")
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

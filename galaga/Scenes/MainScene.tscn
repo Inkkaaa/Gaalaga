@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqbt6otfmbnq1"]
+
+[ext_resource type="Script" uid="uid://ckkwvvsx6ta4q" path="res://Scripts/main_scene.gd" id="1_7rqgy"]
+[ext_resource type="PackedScene" uid="uid://mslc2f034v53" path="res://Scenes/player.tscn" id="1_hpc76"]
+[ext_resource type="PackedScene" uid="uid://dhd3j6j5vn42k" path="res://Scenes/map.tscn" id="3_nhkr4"]
+[ext_resource type="PackedScene" uid="uid://kxnbtk4c6c6q" path="res://Scenes/UI.tscn" id="4_qxria"]
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_7rqgy")
+
+[node name="Map" parent="." instance=ExtResource("3_nhkr4")]
+
+[node name="Player" parent="." instance=ExtResource("1_hpc76")]
+position = Vector2(75, 200)
+
+[node name="Ui" parent="." instance=ExtResource("4_qxria")]
+
+[node name="ScoreTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="enemy_spawned" from="Map" to="." method="_on_map_enemy_spawned"]
+[connection signal="health_changed" from="Player" to="." method="_on_player_health_changed"]
+[connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

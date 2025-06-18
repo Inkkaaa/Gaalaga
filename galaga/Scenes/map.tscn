@@ -1,0 +1,139 @@
+[gd_scene load_steps=15 format=3 uid="uid://dhd3j6j5vn42k"]
+
+[ext_resource type="Script" uid="uid://bscg2tmc0073r" path="res://Scripts/map.gd" id="1_4c2oa"]
+[ext_resource type="Texture2D" uid="uid://bapu1s44442g0" path="res://Assets/BG teste/parallax/forest/forest_sky.png" id="1_np2xp"]
+[ext_resource type="Script" uid="uid://cg4f6oapdcwup" path="res://Scripts/parallax_2d.gd" id="1_w7jjh"]
+[ext_resource type="Texture2D" uid="uid://t4grw5qg3wqi" path="res://Assets/BG teste/parallax/forest/forest_mountain.png" id="2_w7jjh"]
+[ext_resource type="Texture2D" uid="uid://cqrto0e1vw8f6" path="res://Assets/BG teste/parallax/forest/forest_back.png" id="3_6q3n4"]
+[ext_resource type="Texture2D" uid="uid://dc6xowitkmqns" path="res://Assets/BG teste/parallax/forest/forest_mid.png" id="4_4c2oa"]
+[ext_resource type="Texture2D" uid="uid://bs8c1lgsaw6ub" path="res://Assets/BG teste/parallax/forest/forest_short.png" id="5_olcgw"]
+[ext_resource type="Texture2D" uid="uid://dnucfk85hmhuu" path="res://Assets/BG teste/parallax/forest/forest_moon.png" id="6_dlo4w"]
+[ext_resource type="PackedScene" uid="uid://bwvv48owa578k" path="res://Scenes/Enemy.tscn" id="8_6q3n4"]
+[ext_resource type="PackedScene" uid="uid://mslc2f034v53" path="res://Scenes/player.tscn" id="10_olcgw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6q3n4"]
+size = Vector2(25, 375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c2oa"]
+size = Vector2(25, 500)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_olcgw"]
+size = Vector2(850, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlo4w"]
+size = Vector2(20, 425)
+
+[node name="Map" type="Node"]
+script = ExtResource("1_4c2oa")
+enemy_to_spawn = ExtResource("8_6q3n4")
+
+[node name="Parallax2D" type="ParallaxBackground" parent="."]
+script = ExtResource("1_w7jjh")
+
+[node name="céu" type="ParallaxLayer" parent="Parallax2D"]
+motion_scale = Vector2(0.73, 0.73)
+motion_mirroring = Vector2(950, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/céu"]
+position = Vector2(400, 200)
+scale = Vector2(0.5, 0.4)
+texture = ExtResource("1_np2xp")
+
+[node name="montanhas" type="ParallaxLayer" parent="Parallax2D"]
+motion_scale = Vector2(1.2, 1.2)
+motion_mirroring = Vector2(949, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/montanhas"]
+position = Vector2(400, 200)
+scale = Vector2(0.25, 0.175)
+texture = ExtResource("2_w7jjh")
+
+[node name="longe" type="ParallaxLayer" parent="Parallax2D"]
+motion_scale = Vector2(1.6, 1.6)
+motion_mirroring = Vector2(950, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/longe"]
+position = Vector2(400, 200.5)
+scale = Vector2(0.25, 0.175)
+texture = ExtResource("3_6q3n4")
+
+[node name="meio" type="ParallaxLayer" parent="Parallax2D"]
+motion_scale = Vector2(2.5, 2.5)
+motion_mirroring = Vector2(950, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/meio"]
+position = Vector2(400, 200)
+scale = Vector2(0.25, 0.175)
+texture = ExtResource("4_4c2oa")
+
+[node name="perto" type="ParallaxLayer" parent="Parallax2D"]
+motion_scale = Vector2(4, 4)
+motion_mirroring = Vector2(948, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/perto"]
+position = Vector2(400, 200)
+scale = Vector2(0.25, 0.175)
+texture = ExtResource("5_olcgw")
+
+[node name="lua" type="ParallaxLayer" parent="Parallax2D"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D/lua"]
+position = Vector2(346, 283)
+scale = Vector2(0.247895, 0.235417)
+texture = ExtResource("6_dlo4w")
+
+[node name="Enemy" parent="Parallax2D" instance=ExtResource("8_6q3n4")]
+position = Vector2(641, 178)
+
+[node name="SpawnArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
+position = Vector2(825, 200)
+shape = SubResource("RectangleShape2D_6q3n4")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[node name="RemoveArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RemoveArea"]
+position = Vector2(-100, 200)
+shape = SubResource("RectangleShape2D_4c2oa")
+
+[node name="borders" type="StaticBody2D" parent="."]
+collision_layer = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="borders"]
+position = Vector2(400, -10)
+shape = SubResource("RectangleShape2D_olcgw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="borders"]
+position = Vector2(400, 410)
+shape = SubResource("RectangleShape2D_olcgw")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="borders"]
+position = Vector2(98, 200)
+shape = SubResource("RectangleShape2D_dlo4w")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="borders"]
+position = Vector2(48, 200)
+shape = SubResource("RectangleShape2D_dlo4w")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="borders"]
+position = Vector2(-10, 200)
+shape = SubResource("RectangleShape2D_dlo4w")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="borders"]
+position = Vector2(810, 200)
+shape = SubResource("RectangleShape2D_dlo4w")
+
+[node name="Player" parent="." instance=ExtResource("10_olcgw")]
+position = Vector2(75, 200)
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="body_entered" from="RemoveArea" to="." method="_on_remove_area_body_entered"]

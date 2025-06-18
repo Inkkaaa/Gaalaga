@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqbt6otfmbnq1"]
+
+[ext_resource type="PackedScene" uid="uid://mslc2f034v53" path="res://Scenes/player.tscn" id="1_hpc76"]
+[ext_resource type="Script" uid="uid://caq78myg01bt" path="res://Scripts/player.gd" id="2_tr2i4"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_hpc76")]
+position = Vector2(50, 200)
+script = ExtResource("2_tr2i4")
