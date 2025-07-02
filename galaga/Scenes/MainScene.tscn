@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqbt6otfmbnq1"]
+[gd_scene load_steps=7 format=3 uid="uid://bqbt6otfmbnq1"]
 
 [ext_resource type="Script" uid="uid://ckkwvvsx6ta4q" path="res://Scripts/main_scene.gd" id="1_7rqgy"]
 [ext_resource type="PackedScene" uid="uid://mslc2f034v53" path="res://Scenes/player.tscn" id="1_hpc76"]
 [ext_resource type="PackedScene" uid="uid://dhd3j6j5vn42k" path="res://Scenes/map.tscn" id="3_nhkr4"]
 [ext_resource type="PackedScene" uid="uid://kxnbtk4c6c6q" path="res://Scenes/UI.tscn" id="4_qxria"]
-[ext_resource type="StyleBox" uid="uid://d0qpprl5m0815" path="res://pressed.tres" id="5_y4jh7"]
-[ext_resource type="StyleBox" uid="uid://chyknc6i5r8aa" path="res://new_style_box_flat.tres" id="6_q68mp"]
+[ext_resource type="PackedScene" uid="uid://67kayg2n2ngl" path="res://Scenes/menu pause.tscn" id="6_y4jh7"]
 [ext_resource type="AudioStream" uid="uid://cqs56aet266gy" path="res://Assets/Jeremy Blake - Powerup! ♫ NO COPYRIGHT 8-bit Music.mp3" id="7_q68mp"]
 
 [node name="MainScene" type="Node2D"]
@@ -22,32 +21,14 @@ position = Vector2(75, 200)
 wait_time = 0.2
 autostart = true
 
-[node name="Pause" type="Label" parent="."]
-visible = false
-offset_left = 337.5
-offset_top = 50.0
-offset_right = 537.5
-offset_bottom = 138.0
-theme_override_font_sizes/font_size = 64
-text = "PAUSE"
-
-[node name="Back" type="Button" parent="Pause"]
-layout_mode = 0
-offset_left = 60.0
-offset_top = 125.0
-offset_right = 135.0
-offset_bottom = 160.0
-theme_override_styles/hover = ExtResource("5_y4jh7")
-theme_override_styles/pressed = ExtResource("5_y4jh7")
-theme_override_styles/normal = ExtResource("6_q68mp")
-text = "Back"
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_q68mp")
 autoplay = true
+
+[node name="Node2D" parent="." instance=ExtResource("6_y4jh7")]
+visible = false
 
 [connection signal="enemy_spawned" from="Map" to="." method="_on_map_enemy_spawned"]
 [connection signal="health_changed" from="Player" to="." method="_on_player_health_changed"]
 [connection signal="player_died" from="Player" to="." method="_on_player_player_died"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
-[connection signal="pressed" from="Pause/Back" to="." method="_on_back_pressed"]

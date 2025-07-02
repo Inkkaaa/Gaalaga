@@ -2,6 +2,14 @@ extends Node2D
 
 var points: int = 0
 
+func _ready() -> void:
+	get_tree().paused = false
+
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("pause"):
+		pause()
+
+
 func _on_player_health_changed(current, max):
 	$Ui.update_health(current, max)
 
@@ -9,6 +17,7 @@ func _on_player_player_died():
 	$Ui.show_player_died()
 	$ScoreTimer.queue_free()
 	$Player.queue_free()
+	get_tree().paused = true
 
 func _on_enemy_died():
 	points += 100
@@ -24,12 +33,6 @@ func _on_score_timer_timeout():
 
 
 func pause():
-	if Input.is_action_pressed("pause"):
 		print("PAUSOU")
-		$Pause.show()
-		$ScoreTimer.paused = true
-
-
-func _on_back_pressed() -> void:
-	$Ui/Pause.hide()
-	$ScoreTimer.paused = false
+		$Node2D.show()
+		get_tree().paused = true
