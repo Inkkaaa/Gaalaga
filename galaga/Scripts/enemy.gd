@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var speed = -250
 
-@export var max_hp : float = 2
+@export var max_hp : float = 1
 var current_hp: float
 
 @export var collision_damage = 1

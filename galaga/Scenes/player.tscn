@@ -1,22 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://mslc2f034v53"]
 
 [ext_resource type="Script" uid="uid://caq78myg01bt" path="res://Scripts/player.gd" id="1_6t5aa"]
-[ext_resource type="Texture2D" uid="uid://c6g1qukkkc6hp" path="res://Assets/modelos galaga/PNG/Default/ship_A.png" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://bon81ranlhfvh" path="res://Assets/desenhos originais/avião.png" id="2_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://ovddlaeviusv" path="res://Scenes/Weapon.tscn" id="2_cvnsp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v0iea"]
-radius = 14.0357
+radius = 12.0
 
 [node name="Player" type="CharacterBody2D"]
 rotation = 1.5708
+scale = Vector2(1.5, 1.5)
 collision_mask = 6
 script = ExtResource("1_6t5aa")
 
 [node name="ShipA" type="Sprite2D" parent="."]
-texture = ExtResource("1_v0iea")
+rotation = -1.5708
+texture = ExtResource("2_6t5aa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(-1.68085e-05, -2.66667)
 rotation = 1.5708
 shape = SubResource("CircleShape2D_v0iea")
 

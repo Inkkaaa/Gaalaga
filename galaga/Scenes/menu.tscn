@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8dbiqkeq64ys"]
+[gd_scene load_steps=7 format=3 uid="uid://c8dbiqkeq64ys"]
 
 [ext_resource type="Script" uid="uid://qbku6a5w10mv" path="res://Scripts/menu.gd" id="1_cayip"]
 [ext_resource type="StyleBox" uid="uid://d0qpprl5m0815" path="res://pressed.tres" id="1_xhh6f"]
 [ext_resource type="StyleBox" uid="uid://chyknc6i5r8aa" path="res://new_style_box_flat.tres" id="2_cayip"]
+[ext_resource type="Texture2D" uid="uid://c8t1q0hjjx73v" path="res://Assets/desenhos originais/céu fundo 1.png" id="4_jsrd8"]
+[ext_resource type="Texture2D" uid="uid://cmluhc7fg3xv5" path="res://Assets/desenhos originais/predios fundo 1.png" id="5_wbdvm"]
+[ext_resource type="Texture2D" uid="uid://dnucfk85hmhuu" path="res://Assets/BG teste/parallax/forest/forest_moon.png" id="6_q3rjx"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -36,14 +39,6 @@ theme_override_styles/pressed = ExtResource("1_xhh6f")
 theme_override_styles/normal = ExtResource("2_cayip")
 text = "START"
 
-[node name="Scoreboard" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-theme_override_styles/hover = ExtResource("1_xhh6f")
-theme_override_styles/pressed = ExtResource("1_xhh6f")
-theme_override_styles/normal = ExtResource("2_cayip")
-text = "SCOREBOARD"
-
 [node name="Credits" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -60,7 +55,22 @@ theme_override_styles/pressed = ExtResource("1_xhh6f")
 theme_override_styles/normal = ExtResource("2_cayip")
 text = "QUIT"
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(400, 250)
+texture = ExtResource("4_jsrd8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(400, 305)
+texture = ExtResource("5_wbdvm")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(346, 283)
+scale = Vector2(0.247895, 0.235417)
+texture = ExtResource("6_q3rjx")
+
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Scoreboard" to="." method="_on_scoreboard_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://bwvv48owa578k"]
 
-[ext_resource type="Texture2D" uid="uid://dpdhw83i7t4fj" path="res://Assets/modelos galaga/PNG/Default/ship_J.png" id="1_m1htj"]
 [ext_resource type="Script" uid="uid://dgegq6pyuh53s" path="res://Scripts/enemy.gd" id="1_wovta"]
+[ext_resource type="Texture2D" uid="uid://svycu3ny61rv" path="res://Assets/desenhos originais/police car.png" id="2_kpr8r"]
 [ext_resource type="PackedScene" uid="uid://ovddlaeviusv" path="res://Scenes/Weapon.tscn" id="3_xeo28"]
 [ext_resource type="PackedScene" uid="uid://0ya7uke50p5i" path="res://Scenes/EnemyBullet.tscn" id="4_kpr8r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wovta"]
-radius = 20.025
+radius = 11.8369
 
 [node name="Enemy" type="CharacterBody2D"]
 rotation = -1.5708
@@ -14,11 +14,15 @@ collision_layer = 2
 script = ExtResource("1_wovta")
 
 [node name="ShipJ" type="Sprite2D" parent="."]
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("1_m1htj")
+rotation = -1.5708
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("2_kpr8r")
+flip_h = true
+flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(-0.333333, -4.82798e-06)
+scale = Vector2(2.5, 2.5)
 shape = SubResource("CircleShape2D_wovta")
 
 [node name="Weapon" parent="." instance=ExtResource("3_xeo28")]
