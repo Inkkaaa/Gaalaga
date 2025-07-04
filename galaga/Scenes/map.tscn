@@ -11,7 +11,7 @@
 size = Vector2(25, 375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4c2oa"]
-size = Vector2(25, 500)
+size = Vector2(25, 1197)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_olcgw"]
 size = Vector2(850, 20)
@@ -23,36 +23,39 @@ size = Vector2(20, 425)
 script = ExtResource("1_4c2oa")
 enemy_to_spawn = ExtResource("8_6q3n4")
 
+[node name="Enemy" parent="." instance=ExtResource("8_6q3n4")]
+position = Vector2(1206, 540)
+
 [node name="Parallax2D" type="ParallaxBackground" parent="."]
 script = ExtResource("1_w7jjh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
-position = Vector2(400, 250)
+position = Vector2(675, 540)
+scale = Vector2(1.7, 1.813)
 texture = ExtResource("4_w7jjh")
 
 [node name="perto" type="ParallaxLayer" parent="Parallax2D"]
 motion_scale = Vector2(4, 4)
-motion_mirroring = Vector2(800, 0)
+motion_mirroring = Vector2(1350, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/perto"]
-position = Vector2(400, 305)
+position = Vector2(675, 750)
+scale = Vector2(1.7, 2.086)
 texture = ExtResource("5_6q3n4")
 
 [node name="lua" type="ParallaxLayer" parent="Parallax2D"]
 motion_scale = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D/lua"]
-position = Vector2(346, 283)
-scale = Vector2(0.247895, 0.235417)
+position = Vector2(491, 531)
+scale = Vector2(0.471, 0.447292)
 texture = ExtResource("6_dlo4w")
-
-[node name="Enemy" parent="Parallax2D" instance=ExtResource("8_6q3n4")]
-position = Vector2(641, 178)
 
 [node name="SpawnArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
-position = Vector2(825, 200)
+position = Vector2(1450, 540)
+scale = Vector2(1, 2.84)
 shape = SubResource("RectangleShape2D_6q3n4")
 
 [node name="SpawnTimer" type="Timer" parent="."]
@@ -64,11 +67,12 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RemoveArea"]
-position = Vector2(-100, 200)
+position = Vector2(-100, 548.5)
 shape = SubResource("RectangleShape2D_4c2oa")
 
 [node name="borders" type="StaticBody2D" parent="."]
 position = Vector2(7, 0)
+scale = Vector2(1.68, 2.68)
 collision_layer = 4
 metadata/_edit_group_ = true
 

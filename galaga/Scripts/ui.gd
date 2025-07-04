@@ -6,7 +6,7 @@ func update_health(current, max):
 
 func update_points(points):
 	$PointsLabel.text = str(points)
-	$PlayerDied/PointsLabel_D.text = "Your Score:" +  str(points)
+	$PlayerDied/PointsLabel_D.text = "Your Score: " + str(points)
 
 func show_player_died():
 	$PlayerDied.show()

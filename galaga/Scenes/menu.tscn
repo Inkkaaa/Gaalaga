@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8dbiqkeq64ys"]
+[gd_scene load_steps=8 format=3 uid="uid://c8dbiqkeq64ys"]
 
 [ext_resource type="Script" uid="uid://qbku6a5w10mv" path="res://Scripts/menu.gd" id="1_cayip"]
 [ext_resource type="StyleBox" uid="uid://d0qpprl5m0815" path="res://pressed.tres" id="1_xhh6f"]
 [ext_resource type="StyleBox" uid="uid://chyknc6i5r8aa" path="res://new_style_box_flat.tres" id="2_cayip"]
+[ext_resource type="FontFile" uid="uid://pnhgh74g24tr" path="res://Assets/Rex Bold.otf" id="2_wbdvm"]
 [ext_resource type="Texture2D" uid="uid://c8t1q0hjjx73v" path="res://Assets/desenhos originais/céu fundo 1.png" id="4_jsrd8"]
 [ext_resource type="Texture2D" uid="uid://cmluhc7fg3xv5" path="res://Assets/desenhos originais/predios fundo 1.png" id="5_wbdvm"]
 [ext_resource type="Texture2D" uid="uid://dnucfk85hmhuu" path="res://Assets/BG teste/parallax/forest/forest_moon.png" id="6_q3rjx"]
@@ -16,24 +17,44 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cayip")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(675, 540)
+scale = Vector2(1.7, 1.813)
+texture = ExtResource("4_jsrd8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(675, 750)
+scale = Vector2(1.7, 2.086)
+texture = ExtResource("5_wbdvm")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(491, 531)
+scale = Vector2(0.471, 0.447292)
+texture = ExtResource("6_q3rjx")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 50.0
-offset_top = -350.0
-offset_right = 326.0
+offset_top = -962.0
+offset_right = 338.0
+offset_bottom = -612.0
 grow_vertical = 0
+scale = Vector2(1.75, 1.75)
+theme_override_constants/separation = 15
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("2_wbdvm")
+theme_override_font_sizes/font_size = 64
 text = "Rebel Drive"
 
 [node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_wbdvm")
+theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = ExtResource("1_xhh6f")
 theme_override_styles/pressed = ExtResource("1_xhh6f")
 theme_override_styles/normal = ExtResource("2_cayip")
@@ -41,7 +62,8 @@ text = "START"
 
 [node name="Credits" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_wbdvm")
+theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = ExtResource("1_xhh6f")
 theme_override_styles/pressed = ExtResource("1_xhh6f")
 theme_override_styles/normal = ExtResource("2_cayip")
@@ -49,27 +71,12 @@ text = "CREDITS"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_wbdvm")
+theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = ExtResource("1_xhh6f")
 theme_override_styles/pressed = ExtResource("1_xhh6f")
 theme_override_styles/normal = ExtResource("2_cayip")
 text = "QUIT"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(400, 250)
-texture = ExtResource("4_jsrd8")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(400, 305)
-texture = ExtResource("5_wbdvm")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(346, 283)
-scale = Vector2(0.247895, 0.235417)
-texture = ExtResource("6_q3rjx")
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
